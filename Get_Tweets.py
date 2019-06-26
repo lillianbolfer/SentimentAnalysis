@@ -26,7 +26,7 @@ waitquery = 100      #this is the number of searches it will do before resting
 waittime = 2.0          # this is the length of time we tell our program to rest
 total_number = 130     #this is the total number of queries we want
 justincase = 1         #this is the number of minutes to wait just in case twitter throttles us
-results = []
+results = pd.DataFrame()
 
 users =tweepy.Cursor(api.search,
               q=search_words,
@@ -64,7 +64,7 @@ while secondcount < total_number:
     #     break
     
     try:
-        results.append(user.text)
+        results = results.append({"Text": user.text, "Date": user.created_at}, ignore_index=True)
         secondcount = secondcount + 1
         print("current saved is:"+str(secondcount))
 
@@ -75,16 +75,20 @@ while secondcount < total_number:
 
 all_tweet_data = pd.DataFrame()
 
-for tweet in results:
-    analysis = TextBlob(tweet)
+for index, row in results.iterrows():
+    analysis = TextBlob(row[1])
     polarity = analysis.polarity
+    subjectivity = analysis.subjectivity
+    no_tagged = row[1].count('@')
+    word_count = row[1].count(' ')+1
+    char_count = len(row[1])
     if analysis.sentiment[0]>0:
        tone = "positive"
     elif analysis.sentiment[0]<0:
        tone = "negative"
     else:
        tone = "neutral"
-    all_tweet_data = all_tweet_data.append({'Text': tweet, 'Sentiment': tone, 'Polarity': polarity}, ignore_index=True)
+    all_tweet_data = all_tweet_data.append({'Date': row[0], 'Text': row[1], 'Sentiment': tone, 'Polarity': polarity, 'Subjectivity': subjectivity, 'Number Tagged': no_tagged, 'Word Count': word_count, 'Character Count': char_count}, ignore_index=True)
     
 all_tweet_data
 
