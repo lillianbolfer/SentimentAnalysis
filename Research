@@ -9,3 +9,22 @@ Resources Used in our Research
 4.) https://www.geeksforgeeks.org/twitter-sentiment-analysis-using-python/
 
 5.) https://tweepy.readthedocs.io/en/latest/getting_started.html
+
+6.)https://textblob.readthedocs.io/en/dev/
+
+
+About TextBlob
+
+TextBlob is a NLP (Natural Language Processor) that is used in Machine Learning to help computers understand a human's natural language.
+The goal of using an NLP is to read, process, understand, and portray language in a way that is useful to us. NLP is extremely 
+useful in a variety of technologies, here are a few examples:
+-Google Translate
+-Word Processors
+-Siri/Alexa (Voice command prompts)
+
+It is difficult for a computer to process and understand a humans natural language. So how is this accomplished? NLP uses
+algorithms to identify a word's sytax and semantics to properly identify it.
+
+TextBlob in particular is a Python Library, which makes it ideal for use in our project. It offers a simple API to access its
+capabilities and it converts the results to strings. This makes it easy to manipulate the data through simple python commands.
+
