@@ -24,7 +24,7 @@ errorCount=0
 #here we tell the program how fast to search 
 waitquery = 100      #this is the number of searches it will do before resting
 waittime = 2.0          # this is the length of time we tell our program to rest
-total_number = 130     #this is the total number of queries we want
+total_number = 1300     #this is the total number of queries we want
 justincase = 1         #this is the number of minutes to wait just in case twitter throttles us
 results = pd.DataFrame()
 
@@ -104,3 +104,16 @@ all_tweet_data
 #     counter += 1
 
 all_tweet_data.to_csv("Data/TwitterAnalysis.csv")
+
+# Dataframe with word frequency
+wordcount = pd.Series(' '.join(all_tweet_data.Text).split()).str.lower().value_counts()
+print(wordcount.head())
+
+wordcount_df = pd.DataFrame({'Word': wordcount.index, 'Count': wordcount.values})
+wordcount_df.sort_values(by="Count",ascending=False, inplace=True)
+print(wordcount_df.head())
+
+wordcount_df.to_csv("Data/WordCount.csv")
+
+# wordcount_df = pd.DataFrame({'a':list('abssbab')})
+# df.groupby('a').count()
