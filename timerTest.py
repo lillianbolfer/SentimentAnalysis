@@ -11,9 +11,9 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_key_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-# search_words = "gillette OR @Gillette OR to:Gillette -stadium -filter:retweets -from:Gillette -#sponsored"
 search_words = "netflix -filter:retweets -from:Netflix -#sponsored"
-date_since = "2018-09-23"
+date_since = "2019-09-24"
+# date_until = "2018-09-07"
 
 
 # Additional paramaters per https://github.com/KTakatsuji/Twitter-Sentiment-Naive-Bayes/blob/master/NaiveBayes/part1.py
@@ -25,7 +25,7 @@ errorCount=0
 #here we tell the program how fast to search 
 waitquery = 100      #this is the number of searches it will do before resting
 waittime = 2.0          # this is the length of time we tell our program to rest
-total_number = 2000     #this is the total number of queries we want
+total_number = 20     #this is the total number of queries we want
 justincase = 1         #this is the number of minutes to wait just in case twitter throttles us
 results = pd.DataFrame()
 
@@ -38,7 +38,7 @@ users =tweepy.Cursor(api.search,
 text = [0] * total_number
 secondcount = 0
 idvalues = [1] * total_number
-
+ #1 is happy; 2 is sad; 3 is angry; 4 is fearful
 #Below is where the magic happens and the queries are being made according to our desires above
 while secondcount < total_number:
     try:
@@ -104,40 +104,4 @@ all_tweet_data
 #         test_data = test_data.append({'Text': i[1], 'Score': i[0]}, ignore_index=True)
 #     counter += 1
 
-all_tweet_data.to_csv("Data/TwitterAnalysis.csv")
-
-# Dataframe with word frequency
-from nltk.corpus import stopwords 
-from nltk.tokenize import word_tokenize 
-
-join_str = ' '.join(all_tweet_data.Text)
-stop_list = set(stopwords.words('english')) 
-
-print("***CHECK ONE***")
-print(stop_list)
-
-wordcount = pd.Series(' '.join(all_tweet_data.Text).split()).str.lower().value_counts()
-print("***CHECK TWO***")
-print(wordcount.head())
-
-# for index, row in wordcount.iteritems():
-#     if row in stop_list:
-#         #IGNORED wordcount = wordcount.drop(index, inplace=True)
-#         #IGNORED wordcount = np.delete(wordcount, row)
-
-
-print("***CHECK THREE***")
-print(wordcount.head())
-
-wordcount_df = pd.DataFrame({'Word': wordcount.index, 'Count': wordcount.values})
-#IGNORED wordcount_df = pd.DataFrame({'Word': wordcount.index})
-#IGNORED wordcount_df[~wordcount_df['Word'].isin(stop_list)]
-
-wordcount_df.sort_values(by="Count",ascending=False, inplace=True)
-print("***CHECK FOUR***")
-print(wordcount_df.head())
-
-wordcount_df.to_csv("Data/WordCount.csv")
-
-# wordcount_df = pd.DataFrame({'a':list('abssbab')})
-# df.groupby('a').count()
+all_tweet_data.to_csv("Data/Twittertest.csv")
