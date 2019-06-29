@@ -116,15 +116,24 @@ print("***CHECK ONE***")
 print(stop_list)
 
 wordcount = pd.Series(' '.join(all_tweet_data.Text).split()).str.lower().value_counts()
+print("***CHECK TWO***")
 print(wordcount.head())
 
-for index, row in wordcount.items():
-    if row in stop_list:
-        wordcount = wordcount.drop(index, inplace=True)
+# for index, row in wordcount.iteritems():
+#     if row in stop_list:
+#         #IGNORED wordcount = wordcount.drop(index, inplace=True)
+#         #IGNORED wordcount = np.delete(wordcount, row)
+
+
+print("***CHECK THREE***")
 print(wordcount.head())
 
 wordcount_df = pd.DataFrame({'Word': wordcount.index, 'Count': wordcount.values})
+#IGNORED wordcount_df = pd.DataFrame({'Word': wordcount.index})
+#IGNORED wordcount_df[~wordcount_df['Word'].isin(stop_list)]
+
 wordcount_df.sort_values(by="Count",ascending=False, inplace=True)
+print("***CHECK FOUR***")
 print(wordcount_df.head())
 
 wordcount_df.to_csv("Data/WordCount.csv")
