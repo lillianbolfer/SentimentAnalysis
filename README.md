@@ -1,6 +1,7 @@
 Members: Dinielle Nelson, Elizabeth Jaye, and Lillian Bolfer
 
-We are going to use sentiment analysis to analyze tweets on twitter, in regard to a major media event (Netflix before, the day of, and after the annoucement that they're pulling The Office – wide audience, less Russian trolls, and while headache-y at least not completely sanity destroying). We will use a combination of Tweepy and a selection of other Python packages (numpy, pandas, etc.) along with TextBlob in order to analyze viewers’ verbal sentiments and intentions in regards to specific awards. By filtering down based on hash tags and key words in relation to netflix, we will look at based on the results how did the public respond?
+This project is a sentiment analysis that analyzed tweets on twitter, in regard to a major media event: Netflix before, the day of, and after the annoucement that they're pulling The Office – wide audience, less Russian trolls, and while headache-y at least not completely sanity destroying. We used a combination of Tweepy and a selection of other Python packages (numpy, pandas, etc.) along with TextBlob in order to analyze viewers’ verbal sentiments about Netflix and more specifically, the departure of the show The Office. By filtering down based on hash tags and key words in relation to Netflix, we will estimate based on the results how the public responded.
 
-We will use classification to do this, but also visualize trends with a visual interface – methodology to be decided, but visualization after analysis and categorization will use it to upload to Tableau for instance and showcase charts on a colored scale to indicate positivity vs. negativity.
+We used classification to do this, and also visualized trends with a visual interface – Tableau. 
 
+Our visualizations show positivity versus negativity, trends over the time period, and --- insert more here 
