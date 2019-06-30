@@ -12,7 +12,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # search_words = "gillette OR @Gillette OR to:Gillette -stadium -filter:retweets -from:Gillette -#sponsored"
-search_words = "since:2019-06-23 until:2019-06-26 netflix -filter:retweets -from:Netflix -#sponsored"
+search_words = "since:2019-06-23 until:2019-06-24 netflix -filter:retweets -from:Netflix -#sponsored"
 date_since = "2018-09-23"
 
 
