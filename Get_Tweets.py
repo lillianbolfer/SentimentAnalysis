@@ -12,8 +12,8 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # search_words = "gillette OR @Gillette OR to:Gillette -stadium -filter:retweets -from:Gillette -#sponsored"
-search_words = "since:2019-06-23 until:2019-06-24 netflix -filter:retweets -from:Netflix -#sponsored"
-date_since = "2018-09-23"
+search_words = "since:2019-06-27 until:2019-06-28 netflix -filter:retweets -from:Netflix -#sponsored"
+# date_since = "2018-09-23"
 
 
 # Additional paramaters per https://github.com/KTakatsuji/Twitter-Sentiment-Naive-Bayes/blob/master/NaiveBayes/part1.py
@@ -31,8 +31,7 @@ results = pd.DataFrame()
 
 users =tweepy.Cursor(api.search,
               q=search_words,
-              lang="en",
-              since=date_since).items()
+              lang="en").items()
 
 # functions that allow waiting
 text = [0] * total_number
